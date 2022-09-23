@@ -94,8 +94,9 @@ function App(props) {
       <Route path="/listado" element={<Listado favoritos={favoritos} addOrRemoveFromFavs={addOrRemoveFromFavs}/>}/>
       <Route path="/detalle" element={<Detalle/>}/>
       <Route path="/contacto" element={<Contacto/>}/>
-      <Route path="/resultados" element={<Resultados/>}/>
-      <Route path="/favoritos" element={<Favoritos favoritos={favoritos}/>}/>
+      <Route 
+        path="/resultados" element={<Resultados favoritos={favoritos} addOrRemoveFromFavs={addOrRemoveFromFavs}/>}/>
+      <Route path="/favoritos" element={<Favoritos favoritos={favoritos} addOrRemoveFromFavs={addOrRemoveFromFavs}/>}/>
     </Routes> 
     <Footer/>
     </>

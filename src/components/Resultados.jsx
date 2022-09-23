@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "@sweetalert/with-react";
-import { Link} from "react-router-dom";
+import { Link, Navigate, useNavigate} from "react-router-dom";
 
-const Resultados = () => {
+const Resultados = (props) => {
+
+  const currentPath = useNavigate();
+
+  const token = sessionStorage.getItem("token");
+  let idsInFavs = [];
+  idsInFavs = props.favoritos.map((movie) => {
+    return movie.id;
+  });
   
   // Leo de la URl la query que trae cosigo para sacar de ahi el id, para eso uso el objeto URLSearchParams y el objeto window.location que me trae la url y uso el metodo search para leer su query (lee todo lo que hay despues del ? en la url) y la guardo en una variable
   let query = new URLSearchParams(window.location.search);
@@ -18,9 +26,9 @@ const Resultados = () => {
       .get(endPoint)
       .then((response) => {
         const apiData = response.data.results;
-        console.log('ll',apiData);
         if (apiData.length === 0) {
           swal(<h2>We couldn't find any results</h2>);
+          currentPath("/listado");
           return
         }
         setMoviesResult(apiData);
@@ -31,6 +39,8 @@ const Resultados = () => {
   // console.log("kk2",moviesResults);
 
   return (
+    <>
+    {!token && <Navigate to="/" />}
     <div className="container h-100"> 
       <h2 className="text-start m-3"> Search: <em>{keyword}</em> </h2>
 
@@ -46,6 +56,26 @@ const Resultados = () => {
                   className="card-img-top"
                   alt={item.title}
                 />
+                {idsInFavs.find((movie) => {
+                    return movie == item.id;
+                  }) ? (
+                    <button
+                      className="favorite-movie"
+                      onClick={props.addOrRemoveFromFavs}
+                      data-movie-id={item.id}
+                    >
+                      ❤️
+                    </button>
+                  ) : (
+                    <button
+                      className="favorite-movie"
+                      onClick={props.addOrRemoveFromFavs}
+                      data-movie-id={item.id}
+                    >
+                      🖤
+                    </button>
+                  )}
+
                 <div className="card-body">
                   <h5 className="card-title">{item.title}</h5>
                   {/* Recorto la longitud de la descripcion para que me queden del mismo alto las cards con un metodo de array*/}
@@ -66,6 +96,7 @@ const Resultados = () => {
         })}
       </div>
     </div>
+    </>
   );
 };
 
