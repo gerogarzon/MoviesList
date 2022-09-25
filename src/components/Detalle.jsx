@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import axios from "axios";
-import swal from "@sweetalert/with-react";
+import Swal from 'sweetalert2'
+import Header from "./Header"
 
-const Detalle = () => {
+const Detalle = ({favoritos}) => {
 
   // Leo de la URl la query que trae cosigo para sacar de ahi el id, para eso uso el objeto URLSearchParams y el objeto window.location que me trae la url y uso el metodo search para leer su query (lee todo lo que hay despues del ? en la url) y la guardo en una variable
   let query = new URLSearchParams(window.location.search);
@@ -22,7 +23,13 @@ const Detalle = () => {
         setMovie([response.data]);
       })
       .catch((error) => {
-        swal(<h2>Hubo un error, estamos trabajando en ello...</h2>);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong, we are working on it...',
+          showConfirmButton: false,
+          timer: 1500
+        })
       });
   }, [id]);
 
@@ -32,7 +39,7 @@ const Detalle = () => {
   return (
     <>
       {!token && <Navigate to="/" />}
-
+      <Header favoritos={favoritos}/>
       <div className="container-fluid bg-dark">
         {movie.map((item, index) => {
           return (

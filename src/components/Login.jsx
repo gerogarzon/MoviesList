@@ -1,12 +1,13 @@
 // Libraries
 import React from "react";
 import axios from "axios";
-import swal from "@sweetalert/with-react";
+import Swal from 'sweetalert2'
 import {useNavigate, Navigate} from "react-router-dom"
+import Header from "./Header"
 import '../css/bootstrap.min.css'
 
 
-const Login = () => {
+const Login = ({favoritos}) => {
 
   // guardo en una variable el historial de navegacion (url) para una vez hecho el login redireccionarlo a otra page
   const currentPath = useNavigate();
@@ -21,7 +22,13 @@ const Login = () => {
 
     // Pongo una validacion para que no se envie un formulario con campos vacios
     if (email === "" || password === "") {
-      swal(<h2>No pueden haber campos vacios</h2>);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No entries found',
+        showConfirmButton: false,
+        timer: 1500
+      })
       return;
     }
     
@@ -31,13 +38,26 @@ const Login = () => {
 
     // Las expresiones regulares traen consigo metodos y funciones, en este caso la funcion test devuelve un booleano si cumple o no sus requisitos para que un email sea valido, aca me pregunto, no esta vacio ok pero me da false el test entonces avisale que introduzca un email valido
     if (email !== "" && !regexEmail.test(email)) {
-      swal(<h2>Debes ingresar un email valido</h2>);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You must enter a valid email address',
+        showConfirmButton: false,
+        timer: 1500
+      })
       return;
     }
 
     // Verifico autorizacion, que sea el email y la password que yo tengo autorizada a acceder
     if (email !== "challenge@alkemy.org" && password !== "react") {
-      swal(<h2>Credenciales Invalidas</h2>);
+      console.log("entro")
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Invalid credentials',
+        showConfirmButton: false,
+        timer: 1500
+      })
       return;
     }
     
@@ -45,7 +65,12 @@ const Login = () => {
     axios
       .post("http://challenge-react.alkemy.org", { email, password })
       .then((res) => {
-        swal(<h2>Login success!</h2>);
+        Swal.fire({
+          icon: 'success',
+          title: 'You logged in successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
         const tokenRecibido = res.data.token
         // Guardo el token en la sessionStorage, que a diferencia de la localStorage se borra automaticamente al cerrar el navegador o la pestaña
         sessionStorage.setItem("token", tokenRecibido)
@@ -60,24 +85,34 @@ const Login = () => {
   return (
     <>
     {token && <Navigate to="/listado" />}
-    <div className="container my-4 ">
-      <h2>Formulario de login</h2>
+    <Header favoritos={favoritos}/>
+    <div className="d-flex justify-content-center my-3 ">
+      <div className="row text-light bg-success rounded p-5 w-50">
+     <div className="p-0 ms-3">
+     <h1><em>Login</em></h1>
+     <h6  className="text-dark p-0 m-0"> You can try this website using the following credentials:</h6>
+      <h6  className="text-dark p-0 m-0"><em>Email: challenge@alkemy.org</em></h6>
+      <h6  className="text-dark p-0 mb-3"><em>Password: react</em></h6>
+      </div> 
+      
+    
       <form onSubmit={submitHandler}>
         <label>
-          <span>Correo electronico:</span>
+          <span>Email:</span>
           <br />
           <input type="text" name="email" />
         </label>
         <br />
         <label>
-          <span>Contraseña:</span>
+          <span>Password:</span>
           <br />
           <input type="password" name="password" />
         </label>
         <br />
         <br />
-        <button className="btn btn-success" type="submit">Ingresar</button>
+        <button className="btn btn-light" type="submit">Login</button>
       </form>
+      </div>
       </div>
     </>
   );

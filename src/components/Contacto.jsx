@@ -2,12 +2,13 @@ import React from "react";
 import {
   GithubOutlined,
   LinkedinOutlined,
-  FacebookOutlined,
 } from "@ant-design/icons";
+import Header from "./Header"
 
-const Contacto = () => {
+const Contacto = ({favoritos}) => {
   return (
     <>
+    <Header favoritos={favoritos}/>
       <div className=" text-center p-5 vh  bg-gradient">
         <h1 className="mb-4">Let's get in touch!</h1>
         <p className="p-2 mb-3">

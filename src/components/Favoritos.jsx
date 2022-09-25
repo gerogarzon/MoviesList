@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Navigate } from "react-router-dom";
+import Header from "./Header";
 
 const Favoritos = ({ favoritos, addOrRemoveFromFavs }) => {
   const token = sessionStorage.getItem("token");
@@ -19,6 +20,7 @@ const Favoritos = ({ favoritos, addOrRemoveFromFavs }) => {
   return (
     <>
       {!token && <Navigate to="/" />}
+      <Header favoritos={favoritos}/>
       <div className="container h-100">
         <h2 className="text-start m-3">My favorites movies:</h2>
         {favoritos.length === 0 && (

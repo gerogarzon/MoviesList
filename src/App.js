@@ -9,7 +9,6 @@ import Detalle from "./components/Detalle"
 import Contacto from "./components/Contacto"
 import Resultados from './components/Resultados'
 import Favoritos from './components/Favoritos'
-import Header from './components/Header'
 import Footer from './components/Footer'
 
 // Styles
@@ -18,7 +17,7 @@ import "./css/app.css"
 
 
 
-function App(props) {
+function App() {
 
   const [favoritos , setFavoritos] = useState([]);
 
@@ -27,15 +26,10 @@ function App(props) {
       setFavoritos(favsInLocal)    
   },[])
 
-
-
   const addOrRemoveFromFavs = (e)=> {
     // voy a guardar en la localstorage las pelicular que clickeo como favoritas para ello usare una variable intermedia que inicalizare vacia y pondre una verificacion que si mi local storage esta null setee esta variable intermedia con un array vacio
     let favMovies = localStorage.getItem('favs');
-  
-  
-    let tempMoviesInFavs;
-  
+    let tempMoviesInFavs; 
     if (favMovies === null){
       tempMoviesInFavs = [];
     } else {
@@ -88,12 +82,11 @@ function App(props) {
  }
   return (
     <>
-    <Header favoritos={favoritos} />
     <Routes>
-      <Route path="/" element={<Login/>}/>
+      <Route path="/" element={<Login favoritos={favoritos} />}/>
       <Route path="/listado" element={<Listado favoritos={favoritos} addOrRemoveFromFavs={addOrRemoveFromFavs}/>}/>
-      <Route path="/detalle" element={<Detalle/>}/>
-      <Route path="/contacto" element={<Contacto/>}/>
+      <Route path="/detalle" element={<Detalle favoritos={favoritos} />}/>
+      <Route path="/contacto" element={<Contacto favoritos={favoritos}/>}/>
       <Route 
         path="/resultados" element={<Resultados favoritos={favoritos} addOrRemoveFromFavs={addOrRemoveFromFavs}/>}/>
       <Route path="/favoritos" element={<Favoritos favoritos={favoritos} addOrRemoveFromFavs={addOrRemoveFromFavs}/>}/>

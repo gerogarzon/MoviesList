@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
-import swal from "@sweetalert/with-react";
+import Swal from 'sweetalert2';
+import Header from "./Header"
+
 
 const Listado = (props) => {
-  console.log(props.favoritos);
 
+  
   // leo de las props los ids y los grabo en un array para luego compararlos con el id de la pelicula a la que se le hizo click en el btn favs para asi renderizarle un corazon rojo en vez de uno negro
   let idsInFavs = [];
   // como mis props son un array con objetos dentro y yo solo quiero extraer los ids de esos objetos debo iterarlo, uso un map que me devuelva solo los id (tener en cuenta que los id estan como string y no como number)
   idsInFavs = props.favoritos.map((movie) => {
     return movie.id;
   });
-  console.log(idsInFavs);
 
   // Importante inicializar mi estado con el tipo de info que yo espero recibir vacia porque sino da null y romperia el map dando error sin cargar nada
   const [movieList, setMovieList] = useState([]);
-  console.log(
-    "gg",
-    movieList.map((item) => item.id)
-  );
 
   useEffect(() => {
+    
     const endPoint =
       "https://api.themoviedb.org/3/discover/movie?api_key=c4edc204321e6bf205d6e5f5ed8556cd&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
 
@@ -32,7 +30,13 @@ const Listado = (props) => {
         setMovieList(apiData);
       })
       .catch((error) => {
-        swal(<h2>Hubo un error, estamos trabajando en ello...</h2>);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong, we are working on it...',
+          showConfirmButton: false,
+          timer: 1500
+        })
       });
   }, [setMovieList]);
 
@@ -43,6 +47,7 @@ const Listado = (props) => {
   return (
     <>
       {!token && <Navigate to="/" />}
+    <Header favoritos={props.favoritos}/>
       <div className="container h-100">
         <h2 className="text-start m-3">Movie List:</h2>
         <div className="row">

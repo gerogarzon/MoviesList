@@ -1,11 +1,9 @@
 import React from "react";
-import swal from "@sweetalert/with-react";
-import {useNavigate, Navigate} from "react-router-dom"
+import Swal from 'sweetalert2'
+import {useNavigate, } from "react-router-dom"
 
 function Buscador() {
 
-  // protego la ruta para que si no esta logeado no puede acceder
-    const token = sessionStorage.getItem("token");
 
     const currentPath = useNavigate();
 
@@ -19,9 +17,21 @@ function Buscador() {
 
         // aca le digo que minimo ponga cuatro letras para poder buscar sino le aviso del error 
         if (key.length === 0) {
-            swal(<h2>Empty search</h2>)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Empty search',
+            showConfirmButton: false,
+            timer: 1500
+          })
         } else if (key.length < 4){
-            swal(<h2>You must enter at least 4 characters</h2>)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'You must enter at least 4 characters',
+            showConfirmButton: false,
+            timer: 1500
+          })
         } else {
             e.target.keyword.value = "";
             currentPath(`/resultados?keyword=${key}`);
@@ -31,7 +41,7 @@ function Buscador() {
 
   return (
     <>
-     {!token && <Navigate to="/" />}
+     
       <form onSubmit={handleSubmit} className="d-flex align-items-center">
         <label className="form-label mb-0 mx-2">
           <input className="form-control" type="text" name="keyword" placeholder="Search..." />
