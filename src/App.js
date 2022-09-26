@@ -23,7 +23,12 @@ function App() {
 
   useEffect(() =>{
       const favsInLocal = JSON.parse(localStorage.getItem("favs"))
-      setFavoritos(favsInLocal)    
+      if(favsInLocal===null){
+        setFavoritos([]);
+      } else {
+
+        setFavoritos(favsInLocal)    
+      }
   },[])
 
   const addOrRemoveFromFavs = (e)=> {
