@@ -19,7 +19,7 @@ const Contacto = ({favoritos}) => {
           className="p-3 link-success"
           href="https://github.com/gerogarzon"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           <GithubOutlined style={{ fontSize: "25px" }} className="p-2" />
         </a>
@@ -27,7 +27,7 @@ const Contacto = ({favoritos}) => {
           className="p-3 link-success"
           href="https://www.linkedin.com/in/geronimo-garzon/"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           <LinkedinOutlined style={{ fontSize: "25px" }} className="p-2" />
         </a>

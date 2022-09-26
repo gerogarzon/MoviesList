@@ -1,6 +1,6 @@
 // Libraries
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate, Navigate } from "react-router-dom";
 import Header from "./Header";
@@ -89,7 +89,7 @@ const Login = ({ favoritos }) => {
       {token && <Navigate to="/listado" />}
       <Header favoritos={favoritos} />
       <div className="d-flex justify-content-center my-3 ">
-        <div className="row text-light bg-success rounded p-5 w-50">
+        <div className="row text-light bg-success rounded p-5 mx-4 w-md-50">
           <div className="p-0 ms-3">
             <h1>
               <em>Login</em>

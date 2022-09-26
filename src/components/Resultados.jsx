@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import Header from "./Header"
+import Header from "./Header";
 
 const Resultados = (props) => {
   const currentPath = useNavigate();
@@ -19,7 +19,7 @@ const Resultados = (props) => {
   let keyword = query.get("keyword");
 
   const [moviesResults, setMoviesResult] = useState([]);
-  // console.log("kk",moviesResults);
+
   useEffect(() => {
     const endPoint = `https://api.themoviedb.org/3/search/movie?api_key=c4edc204321e6bf205d6e5f5ed8556cd&language=en-US&query=${keyword}`;
     axios
@@ -28,12 +28,12 @@ const Resultados = (props) => {
         const apiData = response.data.results;
         if (apiData.length === 0) {
           Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'We could not find any results',
+            icon: "error",
+            title: "Oops...",
+            text: "We could not find any results",
             showConfirmButton: false,
-            timer: 1500
-          })
+            timer: 1500,
+          });
           currentPath("/listado");
           return;
         }
@@ -42,19 +42,21 @@ const Resultados = (props) => {
       .catch((error) => console.log("caca", error));
   }, [moviesResults]);
 
- 
-
   return (
     <>
       {!token && <Navigate to="/" />}
-      <Header favoritos={props.favoritos}/>
+      <Header favoritos={props.favoritos} />
       <div className="container h-100">
         <h2 className="text-start m-3">
           {" "}
           Search: <em>{keyword}</em>{" "}
         </h2>
 
-        {moviesResults.length === 0 && <h3>No results</h3>}
+        {moviesResults.length === 0 && (
+          <h5 className="text-danger p-3">
+            <em>No results found</em>
+          </h5>
+        )}
 
         <div className="row">
           {moviesResults.map((item, index) => {

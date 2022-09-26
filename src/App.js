@@ -26,7 +26,6 @@ function App() {
       if(favsInLocal===null){
         setFavoritos([]);
       } else {
-
         setFavoritos(favsInLocal)    
       }
   },[])

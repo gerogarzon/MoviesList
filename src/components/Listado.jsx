@@ -62,9 +62,9 @@ const Listado = (props) => {
                     alt={item.title}
                   />
                   {/* de las props leo la funcion escrita en el componente app que ejecuto al hacer click con el evento onclick */}
-                  {/* recorro el array donde guarde todos los ids de las peliculas que estan en favoritos (tener en cuenta que comparo con 2= y no 3= porque comparo string con number) */}
+                  {/* recorro el array donde guarde todos los ids de las peliculas que estan en favoritos (tener en cuenta que comparo con 2= y no 3= porque comparo string con number) agrego mejor tostring asi tenga el 3= y no muestre warning en consola */}
                   {idsInFavs.find((movie) => {
-                    return movie == item.id;
+                    return movie === item.id.toString();
                   }) ? (
                     <button
                       className="favorite-movie"
