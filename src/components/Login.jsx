@@ -63,7 +63,7 @@ const Login = ({favoritos}) => {
     
     // Si todaslas verificaciones se cumplen entonces manda a la API el usuario y guardo el token que me devuelve la response
     axios
-      .post("https://challenge-react.alkemy.org", { email, password })
+      .post("http://challenge-react.alkemy.org", { email, password })
       .then((res) => {
         Swal.fire({
           icon: 'success',
