@@ -17,7 +17,7 @@ const Header = ({ favoritos }) => {
             {!token ? (
               <li className="nav-item ">
                 <Link className="nav-link text-white" to="/">
-                  Login
+                  Log in
                 </Link>
               </li>
             ) : (

@@ -11,7 +11,7 @@ const Logout = () => {
     <>
       <li className="nav-item ">
         <button className="btn btn-dark" onClick={handleLogout}>
-          Logout
+          Log out
         </button>
       </li>
     </>
