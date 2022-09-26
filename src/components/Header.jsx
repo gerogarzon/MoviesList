@@ -5,18 +5,18 @@ import Logout from "./Logout";
 import "../css/bootstrap.min.css";
 
 const Header = ({ favoritos }) => {
-  
   const token = sessionStorage.getItem("token");
- 
-  
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark p-3">
       <div className="container-fluid">
-        <div className="collapse navbar-collapse ">
+       
+      
+        <div className=" " id="navbarNav">
           <ul className="navbar-nav ">
             {!token ? (
               <li className="nav-item ">
-                <Link className="nav-link text-white" to="/">
+                <Link className="nav-link text-white" to="/" >
                   Log in
                 </Link>
               </li>
@@ -52,7 +52,7 @@ const Header = ({ favoritos }) => {
             </li>
           </ul>
         </div>
-        <Buscador />
+          <Buscador />
       </div>
     </nav>
   );

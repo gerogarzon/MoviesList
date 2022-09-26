@@ -47,14 +47,14 @@ const Detalle = ({favoritos}) => {
               <h2 className="p-2 text-start ms-5 text-white mb-3">
                 Title: {item.title}
               </h2>
-              <div className="col-5 bg-dark">
+              <div className="col-md-5 col-sm-12 bg-dark">
                 <img
                   className="img-fluid img-thumbnail"
                   src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                   alt="imagen"
                 />
               </div>
-              <div className="col-7  bg-dark text-white">
+              <div className="col-md-7  bg-dark text-white">
                 <div className="container">
                   <div>
                     <h4>Description:</h4>

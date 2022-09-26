@@ -9,8 +9,8 @@ const Logout = () => {
 
   return (
     <>
-      <li className="nav-item ">
-        <button className="btn btn-dark" onClick={handleLogout}>
+      <li className="nav-item d-flex align-items-center ">
+        <button className="btn btn-dark p-0 " onClick={handleLogout}>
           Log out
         </button>
       </li>
