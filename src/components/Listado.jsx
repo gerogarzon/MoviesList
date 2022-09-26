@@ -21,7 +21,7 @@ const Listado = (props) => {
   useEffect(() => {
     
     const endPoint =
-      "http://api.themoviedb.org/3/discover/movie?api_key=c4edc204321e6bf205d6e5f5ed8556cd&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
+      "https://api.themoviedb.org/3/discover/movie?api_key=c4edc204321e6bf205d6e5f5ed8556cd&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
 
     axios
       .get(endPoint)
@@ -57,7 +57,7 @@ const Listado = (props) => {
               <div key={index} className="col-3 mt-3">
                 <div className="card">
                   <img
-                    src={`http://image.tmdb.org/t/p/w500${item.poster_path}`}
+                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                     className="card-img-top"
                     alt={item.title}
                   />

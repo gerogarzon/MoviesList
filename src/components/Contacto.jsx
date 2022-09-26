@@ -17,7 +17,7 @@ const Contacto = ({favoritos}) => {
         <h5 className="mt-3">Follow me:</h5>
         <a
           className="p-3 link-success"
-          href="http://github.com/gerogarzon"
+          href="https://github.com/gerogarzon"
           target="_blank"
           rel="noreferrer"
         >
@@ -25,7 +25,7 @@ const Contacto = ({favoritos}) => {
         </a>
         <a
           className="p-3 link-success"
-          href="http://www.linkedin.com/in/geronimo-garzon/"
+          href="https://www.linkedin.com/in/geronimo-garzon/"
           target="_blank"
           rel="noreferrer"
         >

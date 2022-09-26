@@ -12,7 +12,7 @@ const Footer = () => {
                 <li className="nav-item">
                   <a
                     className="nav-link text-end pe-4"
-                    href="http://www.linkedin.com/in/geronimo-garzon/"
+                    href="https://www.linkedin.com/in/geronimo-garzon/"
                     rel="noopener noreferrer"
                   >
                     Linkedin
@@ -21,7 +21,7 @@ const Footer = () => {
                 <li className="nav-item">
                   <a
                     className="nav-link text-end"
-                    href="http://www.linkedin.com/in/geronimo-garzon/"
+                    href="https://www.linkedin.com/in/geronimo-garzon/"
                     rel="noopener noreferrer"
                   >
                     Github
