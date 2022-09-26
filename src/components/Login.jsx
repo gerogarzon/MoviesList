@@ -59,8 +59,19 @@ const Login = ({ favoritos }) => {
     }
 
     const fakeToken = "hdhdgvdgchdgddg";
-    sessionStorage.setItem("token", fakeToken);
-    currentPath("/listado");
+    if(email ===  "challenge@alkemy.org" && password === "react" ){
+      sessionStorage.setItem("token", fakeToken);
+      currentPath("/listado");
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Invalid credentials",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    return;
+  }
 
     // Si todaslas verificaciones se cumplen entonces manda a la API el usuario y guardo el token que me devuelve la response
     // axios

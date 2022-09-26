@@ -71,7 +71,7 @@ const Listado = (props) => {
                       onClick={props.addOrRemoveFromFavs}
                       data-movie-id={item.id}
                     >
-                      ❤️
+                      <span role="img" aria-label="">❤️</span> 
                     </button>
                   ) : (
                     <button
@@ -79,7 +79,7 @@ const Listado = (props) => {
                       onClick={props.addOrRemoveFromFavs}
                       data-movie-id={item.id}
                     >
-                      🖤
+                      <span role="img" aria-label="">🖤</span>
                     </button>
                   )}
 

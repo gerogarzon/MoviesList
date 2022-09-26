@@ -69,14 +69,14 @@ const Resultados = (props) => {
                     alt={item.title}
                   />
                   {idsInFavs.find((movie) => {
-                    return movie == item.id;
+                    return movie === item.id;
                   }) ? (
                     <button
                       className="favorite-movie"
                       onClick={props.addOrRemoveFromFavs}
                       data-movie-id={item.id}
                     >
-                      ❤️
+                    <span role="img" aria-label="">❤️</span>  
                     </button>
                   ) : (
                     <button
@@ -84,7 +84,7 @@ const Resultados = (props) => {
                       onClick={props.addOrRemoveFromFavs}
                       data-movie-id={item.id}
                     >
-                      🖤
+                     <span role="img" aria-label="">🖤</span> 
                     </button>
                   )}
 
