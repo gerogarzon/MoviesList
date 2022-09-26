@@ -14,7 +14,7 @@ const Detalle = ({favoritos}) => {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
-    let endPoint = `https://api.themoviedb.org/3/movie/${id}?api_key=c4edc204321e6bf205d6e5f5ed8556cd&language=en-US`;
+    let endPoint = `http://api.themoviedb.org/3/movie/${id}?api_key=c4edc204321e6bf205d6e5f5ed8556cd&language=en-US`;
 
     axios
       .get(endPoint)
@@ -50,7 +50,7 @@ const Detalle = ({favoritos}) => {
               <div className="col-5 bg-dark">
                 <img
                   className="img-fluid img-thumbnail"
-                  src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                  src={`http://image.tmdb.org/t/p/w500${item.poster_path}`}
                   alt="imagen"
                 />
               </div>

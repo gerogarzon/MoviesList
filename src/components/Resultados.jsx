@@ -21,7 +21,7 @@ const Resultados = (props) => {
   const [moviesResults, setMoviesResult] = useState([]);
   // console.log("kk",moviesResults);
   useEffect(() => {
-    const endPoint = `https://api.themoviedb.org/3/search/movie?api_key=c4edc204321e6bf205d6e5f5ed8556cd&language=en-US&query=${keyword}`;
+    const endPoint = `http://api.themoviedb.org/3/search/movie?api_key=c4edc204321e6bf205d6e5f5ed8556cd&language=en-US&query=${keyword}`;
     axios
       .get(endPoint)
       .then((response) => {
@@ -62,7 +62,7 @@ const Resultados = (props) => {
               <div key={index} className="col-3 mt-3">
                 <div className="card ">
                   <img
-                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                    src={`http://image.tmdb.org/t/p/w500${item.poster_path}`}
                     className="card-img-top"
                     alt={item.title}
                   />
