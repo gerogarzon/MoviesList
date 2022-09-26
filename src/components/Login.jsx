@@ -62,33 +62,30 @@ const Login = ({favoritos}) => {
     }
     
 
-  //  const fakeToken = "hdhdgvdgchdgddg";
-  //  sessionStorage.setItem("token", fakeToken)
-  //  currentPath("/listado");
+   const fakeToken = "hdhdgvdgchdgddg";
+   sessionStorage.setItem("token", fakeToken)
+   currentPath("/listado");
 
 
 
     // Si todaslas verificaciones se cumplen entonces manda a la API el usuario y guardo el token que me devuelve la response
-    axios
-      .post("http://challenge-react.alkemy.org", { email, password, headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      }, })
-      .then((res) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'You logged in successfully',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        const tokenRecibido = res.data.token
-        // Guardo el token en la sessionStorage, que a diferencia de la localStorage se borra automaticamente al cerrar el navegador o la pestaña
+    // axios
+    //   .post("http://challenge-react.alkemy.org", { email, password })
+    //   .then((res) => {
+    //     Swal.fire({
+    //       icon: 'success',
+    //       title: 'You logged in successfully',
+    //       showConfirmButton: false,
+    //       timer: 1500
+    //     })
+    //     const tokenRecibido = res.data.token
+    //     // Guardo el token en la sessionStorage, que a diferencia de la localStorage se borra automaticamente al cerrar el navegador o la pestaña
 
-        sessionStorage.setItem("token", tokenRecibido)
-        // redirecciono a la page listado con el hook useNavigate el cual cambia el path 
-        currentPath("/listado");
+    //     sessionStorage.setItem("token", tokenRecibido)
+    //     // redirecciono a la page listado con el hook useNavigate el cual cambia el path 
+    //     currentPath("/listado");
         
-      });
+    //   });
   };
 
   const token = sessionStorage.getItem("token");
