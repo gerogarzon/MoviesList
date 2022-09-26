@@ -11,6 +11,20 @@ function Buscador() {
 
         e.preventDefault();
 
+        const token = sessionStorage.getItem("token");
+        if(!token){
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'You need to login',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+          return
+        }
+
+
         // el metodo trim elimina espacios vacios adelante y detras de una oracion9no elimina los del medio) asi estoy poniendo una validacion por si me introducen la palabra con un espacio antes o despues
         const key = e.target.keyword.value.trim();
         // console.log(key);
