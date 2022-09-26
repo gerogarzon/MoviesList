@@ -72,7 +72,7 @@ function App() {
     localStorage.setItem('favs', JSON.stringify(tempMoviesInFavs));
     // ademas de guardarla en la local storage la seteo en el estado
     setFavoritos(tempMoviesInFavs);
-    console.log("se agrego");
+    
   } else {
     // esta logica dice devolveme todos los que no tengan ese id y guardalos en la variable moviesLeftInFavs y asi elimino ese id dejandolo fuera de la variable moviesLeft que uso para setear la local y el estado
     let moviesLeftInFavs = tempMoviesInFavs.filter(movie=>{
@@ -80,7 +80,7 @@ function App() {
     })
     localStorage.setItem('favs', JSON.stringify(moviesLeftInFavs));
     setFavoritos(moviesLeftInFavs);
-    console.log("se elimino");
+    
   }
 
   
